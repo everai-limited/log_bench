@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "net/http"
+require "httparty"
 require "json"
 require "fileutils"
 
@@ -54,17 +54,10 @@ module LogBench
     end
 
     def fetch_latest_version
-      uri = URI(RUBYGEMS_API_URL)
+      response = HTTParty.get(RUBYGEMS_API_URL, timeout: REQUEST_TIMEOUT)
+      return nil unless response.code == 200
 
-      Net::HTTP.start(uri.host, uri.port, use_ssl: true, read_timeout: REQUEST_TIMEOUT) do |http|
-        request = Net::HTTP::Get.new(uri)
-        response = http.request(request)
-
-        return nil unless response.code == "200"
-
-        data = JSON.parse(response.body)
-        data["version"]
-      end
+      response.parsed_response["version"]
     rescue
       nil
     end
