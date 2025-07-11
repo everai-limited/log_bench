@@ -264,7 +264,7 @@ module LogBench
           end
         end
 
-        def format_params_pretty(params)
+                def format_params_pretty(params)
           case params
           when Hash
             return ["{}"] if params.empty?

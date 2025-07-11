@@ -86,7 +86,7 @@ module LogBench
 
         This should be automatically configured by LogBench, but something went wrong.
 
-        For complete setup: https://github.com/silva96/log_bench#configuration
+        For complete setup: https://github.com/rafpiek/log_bench#configuration
       ERROR
     end
   end

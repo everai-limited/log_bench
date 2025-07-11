@@ -56,13 +56,13 @@ if defined?(LogBench)
   LogBench.setup do |config|
     # Enable/disable LogBench (default: true in development, false elsewhere)
     config.enabled = Rails.env.development? # or any other condition
-  
+
     # Disable automatic lograge configuration (if you want to configure lograge manually)
     # config.configure_lograge_automatically = false  # (default: true)
 
     # Customize initialization message
     # config.show_init_message = :min # :full, :min, or :none (default: :full)
-  
+
     # Specify which controllers to inject request_id tracking
     # config.base_controller_classes = %w[CustomBaseController] # (default: %w[ApplicationController, ActionController::Base])
   end
@@ -82,7 +82,7 @@ if defined?(LogBench)
   end
 end
 
-# Then configure lograge yourself in config/environments/development.rb or an initializer, 
+# Then configure lograge yourself in config/environments/development.rb or an initializer,
 
 Rails.application.configure do
   config.lograge.enabled = true
@@ -245,4 +245,4 @@ This gem is available as open source under the terms of the [MIT License](LICENS
 
 ## Support
 
-- 🐛 **Bug reports**: [GitHub Issues](https://github.com/silva96/log_bench/issues)
+- 🐛 **Bug reports**: [GitHub Issues](https://github.com/rafpiek/log_bench/issues)

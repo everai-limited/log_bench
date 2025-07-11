@@ -22,9 +22,9 @@ def show_help
       Just restart your Rails server after installing the gem.
 
       To customize or enable in other environments:
-      For complete setup: https://github.com/silva96/log_bench#configuration
+      For complete setup: https://github.com/rafpiek/log_bench#configuration
 
-    For more info: https://github.com/silva96/log_bench
+    For more info: https://github.com/rafpiek/log_bench
   HELP
 end
 

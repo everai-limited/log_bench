@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "A terminal-based Rails log viewer with real-time monitoring and filtering capabilities"
   spec.description = "LogBench is a well-structured Ruby gem for parsing and analyzing Rails log files with a focus on lograge format. Features include real-time log monitoring, interactive TUI with filtering and sorting, domain objects for clean code organization, and support for SQL query analysis."
-  spec.homepage = "https://github.com/silva96/log_bench"
+  spec.homepage = "https://github.com/rafpiek/log_bench"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
@@ -24,17 +24,17 @@ Gem::Specification.new do |spec|
     4. View logs: log_bench log/development.log
 
     For help: log_bench --help
-    Documentation: https://github.com/silva96/log_bench
+    Documentation: https://github.com/rafpiek/log_bench
 
   MESSAGE
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/silva96/log_bench"
-  spec.metadata["changelog_uri"] = "https://github.com/silva96/log_bench/blob/main/CHANGELOG.md"
-  spec.metadata["bug_tracker_uri"] = "https://github.com/silva96/log_bench/issues"
-  spec.metadata["documentation_uri"] = "https://github.com/silva96/log_bench/blob/main/README.md"
+  spec.metadata["source_code_uri"] = "https://github.com/rafpiek/log_bench"
+  spec.metadata["changelog_uri"] = "https://github.com/rafpiek/log_bench/blob/main/CHANGELOG.md"
+  spec.metadata["bug_tracker_uri"] = "https://github.com/rafpiek/log_bench/issues"
+  spec.metadata["documentation_uri"] = "https://github.com/rafpiek/log_bench/blob/main/README.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
