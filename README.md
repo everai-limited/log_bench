@@ -1,5 +1,7 @@
 # LogBench
 
+Fork of: [Log Bench gem](https://github.com/silva96/log_bench)
+
 A powerful TUI (Terminal User Interface) for analyzing Rails application logs in real-time. LogBench provides an intuitive interface to view HTTP requests, SQL queries, and performance metrics from your Rails logs.
 
 ![LogBench Preview](logbench-preview.png)
