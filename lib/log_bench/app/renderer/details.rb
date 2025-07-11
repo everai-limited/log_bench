@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "set"
+require "json"
 
 module LogBench
   module App
@@ -21,7 +22,7 @@ module LogBench
           detail_win.box(0, 0)
 
           draw_header
-          # draw_request_details
+          draw_request_details
         end
 
         private
@@ -244,13 +245,6 @@ module LogBench
         end
 
         def add_params_lines(lines, log, max_width)
-          lines << {
-            text: "THIS IS DEBUG",
-            color: color_pair(1) | A_BOLD,
-            segments: [
-              {text: "THIS IS DEBUG", color: color_pair(1) | A_BOLD}
-            ]
-          }
           return unless log[:params]
 
           lines << EMPTY_LINE
@@ -262,21 +256,43 @@ module LogBench
             ]
           }
 
-          params_text = format_params(log[:params])
-          indent = "  "
+          params_lines = format_params_pretty(log[:params])
 
-          # Split the params text into lines that fit within the available width
-          line_width = max_width - indent.length
-          remaining_text = params_text
-
-          while remaining_text && remaining_text.length > 0
-            line_chunk = remaining_text[0, line_width]
-            lines << {text: indent + line_chunk, color: nil}
-            remaining_text = remaining_text[line_width..] || ""
+          # Add each formatted line with proper indentation
+          params_lines.each do |line|
+            lines << {text: "  #{line}", color: nil}
           end
         end
 
-        def format_params(params)
+        def format_params_pretty(params)
+          case params
+          when Hash
+            return ["{}"] if params.empty?
+
+            # Use JSON pretty printing for better readability
+            begin
+              json_str = JSON.pretty_generate(params)
+              json_str.split("\n")
+            rescue JSON::GeneratorError
+              # Fallback to simple formatting if JSON generation fails
+              [format_params_fallback(params)]
+            end
+          when String
+            # Try to parse as JSON first
+            begin
+              parsed = JSON.parse(params)
+              json_str = JSON.pretty_generate(parsed)
+              json_str.split("\n")
+            rescue JSON::ParserError
+              # If not valid JSON, return as-is
+              [params]
+            end
+          else
+            [params.to_s]
+          end
+        end
+
+        def format_params_fallback(params)
           case params
           when Hash
             # Format as readable key-value pairs
