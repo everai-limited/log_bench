@@ -21,7 +21,7 @@ module LogBench
           detail_win.box(0, 0)
 
           draw_header
-          draw_request_details
+          # draw_request_details
         end
 
         private
@@ -244,6 +244,13 @@ module LogBench
         end
 
         def add_params_lines(lines, log, max_width)
+          lines << {
+            text: "THIS IS DEBUG",
+            color: color_pair(1) | A_BOLD,
+            segments: [
+              {text: "THIS IS DEBUG", color: color_pair(1) | A_BOLD}
+            ]
+          }
           return unless log[:params]
 
           lines << EMPTY_LINE
